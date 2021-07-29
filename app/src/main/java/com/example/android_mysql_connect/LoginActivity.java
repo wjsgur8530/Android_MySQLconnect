@@ -21,7 +21,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private AlertDialog dialog;
 
-    private EditText login_email, login_password;
+    private EditText login_id, login_password;
     private Button login_button, join_button;
 
     @Override
@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_login );
 
-        login_email = findViewById( R.id.login_email );
+        login_id = findViewById( R.id.login_id );
         login_password = findViewById( R.id.login_password );
 
         join_button = findViewById( R.id.join_button );
@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
         login_button.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String UserEmail = login_email.getText().toString();
+                String UserName = login_id.getText().toString();
                 String UserPwd = login_password.getText().toString();
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
@@ -55,9 +55,7 @@ public class LoginActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = new JSONObject( response );
                             boolean success = jsonObject.getBoolean( "success" );
-
                             if(success) {//로그인 성공시
-
                                 String UserEmail = jsonObject.getString( "UserEmail" );
                                 String UserPwd = jsonObject.getString( "UserPwd" );
                                 String UserName = jsonObject.getString( "UserName" );
@@ -81,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 };
-                LoginRequest loginRequest = new LoginRequest( UserEmail, UserPwd, responseListener );
+                LoginRequest loginRequest = new LoginRequest( UserName, UserPwd, responseListener );
                 RequestQueue queue = Volley.newRequestQueue( LoginActivity.this );
                 queue.add( loginRequest );
 

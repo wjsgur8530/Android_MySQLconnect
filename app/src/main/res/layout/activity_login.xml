@@ -16,34 +16,35 @@
             app:layout_constraintStart_toStartOf="@+id/login_password" />
 
         <EditText
-            android:id="@+id/login_email"
+            android:id="@+id/login_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="41dp"
             android:ems="10"
-            android:hint="이메일"
+            android:hint="아이디"
             android:inputType="textEmailAddress"
             app:layout_constraintBottom_toTopOf="@+id/login_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <EditText
-            android:id="@+id/login_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="41dp"
-            android:ems="10"
-            android:hint="비밀번호"
-            android:inputType="textPassword"
-            app:layout_constraintBottom_toTopOf="@+id/login_button"
-            app:layout_constraintStart_toStartOf="@+id/login_email" />
+    <EditText
+        android:id="@+id/login_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="41dp"
+        android:ems="10"
+        android:hint="비밀번호"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/login_button"
+        app:layout_constraintEnd_toEndOf="@+id/login_id"
+        app:layout_constraintStart_toStartOf="@+id/login_id" />
 
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_marginBottom="41dp"
-            app:layout_constraintBottom_toTopOf="@+id/login_email"
+            app:layout_constraintBottom_toTopOf="@+id/login_id"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

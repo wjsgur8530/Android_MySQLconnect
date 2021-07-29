@@ -20,7 +20,7 @@ import org.json.JSONObject;
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText join_email, join_password, join_name, join_pwck;
-    private Button join_button, check_button;
+    private Button join_button, check_button, previous_button;
     private AlertDialog dialog;
     private boolean validate = false;
 
@@ -42,12 +42,12 @@ public class RegisterActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                String UserEmail = join_email.getText().toString();
+                String UserName = join_name.getText().toString();
                 if (validate) {
                     return; //검증 완료
                 }
 
-                if (UserEmail.equals("")) {
+                if (UserName.equals("")) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                     dialog = builder.setMessage("아이디를 입력하세요.").setPositiveButton("확인", null).create();
                     dialog.show();
@@ -66,7 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                                 dialog = builder.setMessage("사용할 수 있는 아이디입니다.").setPositiveButton("확인", null).create();
                                 dialog.show();
-                                join_email.setEnabled(false); //아이디값 고정
+                                join_name.setEnabled(false); //아이디값 고정
                                 validate = true; //검증 완료
                                 check_button.setBackgroundColor(getResources().getColor(R.color.colorGray));
                             }
@@ -80,7 +80,7 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                     }
                 };
-                ValidateRequest validateRequest = new ValidateRequest(UserEmail, responseListener);
+                ValidateRequest validateRequest = new ValidateRequest(UserName, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
                 queue.add(validateRequest);
             }
@@ -154,6 +154,13 @@ public class RegisterActivity extends AppCompatActivity {
                 RegisterRequest registerRequest = new RegisterRequest( UserEmail, UserPwd, UserName, responseListener);
                 RequestQueue queue = Volley.newRequestQueue( RegisterActivity.this );
                 queue.add( registerRequest );
+            }
+        });
+        previous_button = findViewById(R.id.delete); // 뒤로가기 버튼
+        previous_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }

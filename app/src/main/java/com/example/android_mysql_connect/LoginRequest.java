@@ -12,11 +12,11 @@ public class LoginRequest extends StringRequest {
     final static private String URL = "http://10.0.2.2/Login.php";
     private Map<String, String> map;
 
-    public LoginRequest(String UserEmail, String UserPwd, Response.Listener<String> listener) {
+    public LoginRequest(String UserName, String UserPwd, Response.Listener<String> listener) {
         super(Method.POST, URL, listener, null);
 
         map = new HashMap<>();
-        map.put("UserEmail", UserEmail);
+        map.put("UserName", UserName);
         map.put("UserPwd", UserPwd);
     }
 
